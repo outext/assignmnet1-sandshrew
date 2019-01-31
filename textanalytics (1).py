@@ -52,9 +52,9 @@ def frequency(e):
     return[]
 
 def show2(f):
-   """This function will show two words with highest frequency""" 
-    # TODO add code here
-    return[]
+   """This function will show two words with highest frequency"""
+   # TODO add code here
+   return[]
 
 if __name__ == '__main__':
     url = "http://catdir.loc.gov/catdir/enhancements/fy0665/2006042906-s.html"
