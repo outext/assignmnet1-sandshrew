@@ -21,19 +21,19 @@ def download(g):
     return tags
 
 def tokenize(tags):
-    """ This function downloads gives you tokenized words ."""
+    """ This function gives you a tokenized list of words from
+        a result set of tags."""
     tokens = []
     for tag in tags:
         for s in tag.strings:
-            tokens.extend(word_tokenize(s))
+            tokens.extend(word_tokenize(s))    
     return tokens
 
-
-def stopw(b):
-    """ This function should remove the stopwords from the input given to function"""
-    # TODO add code here
-    # remove the, a, and
-    return[]
+def stopwb(words):
+    """ This function remove the stopwords from the input given to function"""
+    sws = stopwords.words('english')
+    words = [w for w in words if w.lower() not in sws]
+    return words
 
 
 def stemm(c):
@@ -63,8 +63,7 @@ if __name__ == '__main__':
     text = (download(url))
     #print(text)
     tokenized_text = tokenize(text)
-    print(tokenized_text)
-    """
+    #print(tokenized_text)
     sw = stopw(tokenized_text)
     print(sw)
     stemz = stemm(sw)
