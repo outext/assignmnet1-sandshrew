@@ -29,7 +29,7 @@ def tokenize(tags):
             tokens.extend(word_tokenize(s))    
     return tokens
 
-def stopwb(words):
+def stopw(words):
     """ This function remove the stopwords from the input given to function"""
     sws = stopwords.words('english')
     words = [w for w in words if w.lower() not in sws]
@@ -61,20 +61,20 @@ def show2(f):
 if __name__ == '__main__':
     url = "http://catdir.loc.gov/catdir/enhancements/fy0665/2006042906-s.html"
     text = (download(url))
-    #print(text)
+    print(text)
     tokenized_text = tokenize(text)
-    #print(tokenized_text)
+    print(tokenized_text)
     sw = stopw(tokenized_text)
     print(sw)
-    stemz = stemm(sw)
-    print(stemz)
-    lem = lemmatize(stemz)
-    print(lem)
-    freq = frequency(lem)
-    print(freq)
-    top2 = show2(freq)
-    print(top2)
-    """
+    #stemz = stemm(sw)
+    #print(stemz)
+    #lem = lemmatize(stemz)
+    #print(lem)
+    #freq = frequency(lem)
+    #print(freq)
+    #top2 = show2(freq)
+    #print(top2)
+    
 
 #Download the package as per requirements using nltk.download(). We tend to download only the packages that we require since since its nltk repository is more than 2 GB.
 
