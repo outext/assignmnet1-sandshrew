@@ -12,19 +12,21 @@ from nltk.stem import PorterStemmer
 #import stopwords similar to word_tokenize that was given in word_tokenize.py. Also remove the '(' and ')'.
 
 def download(g):
-    """ This function downloads the json data from the url."""
+    """ This function downloads the html data from the url 
+        and finds all of the <blockquote> tags."""
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
-    tags = soup.find_all("p")
+    tags = soup.find_all("blockquote")
+    
+    return tags
 
-    for tag in tags:
-        print(tag)
-    return (total)
-
-
-def tokenize(a):
+def tokenize(tags):
     """ This function downloads gives you tokenized words ."""
-    return[]
+    tokens = []
+    for tag in tags:
+        for s in tag.strings:
+            tokens.extend(word_tokenize(s))
+    return tokens
 
 
 def stopw(b):
@@ -58,9 +60,12 @@ def show2(f):
 
 if __name__ == '__main__':
     url = "http://catdir.loc.gov/catdir/enhancements/fy0665/2006042906-s.html"
-    tot = (download(url))
-    print(tot)
-    sw = stopw(tot)
+    text = (download(url))
+    #print(text)
+    tokenized_text = tokenize(text)
+    print(tokenized_text)
+    """
+    sw = stopw(tokenized_text)
     print(sw)
     stemz = stemm(sw)
     print(stemz)
@@ -70,6 +75,7 @@ if __name__ == '__main__':
     print(freq)
     top2 = show2(freq)
     print(top2)
+    """
 
 #Download the package as per requirements using nltk.download(). We tend to download only the packages that we require since since its nltk repository is more than 2 GB.
 
